@@ -4,17 +4,12 @@ import java.util.Scanner;
 
 /**
  * @author Mario Andrés Ruiz y Melany Arboleda
- * @version 1.0.0
+ * @version 1.1.0
  */
 public class TallerArbolesNArios {
 
     // variable que contiene la raiz del arbol
     nodo raiz;
-
-    //Método main
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
 
     /**
      * IMPLEMENTACION DE LA CLASE ARBOL *
@@ -31,6 +26,49 @@ public class TallerArbolesNArios {
 
     public void asignarRaiz(nodo raiz) {
         this.raiz = raiz;
+    }
+
+    /*insertar elementos*/
+    public void insertarNodo(int padre, int dato) {
+        nodo p;
+        if (raiz == null) {
+            p = new nodo(0, dato);
+            raiz = p;
+        } 
+        else {
+            insertarRecursivo(raiz, raiz, padre, dato);
+        }
+    }
+
+    public void insertarRecursivo(nodo p, nodo ant, int padre, int dato) {
+        if (p != null) {
+            if (p.obtenerSw() == 0) {
+                if (p.obtenerDato() == padre) {
+                    if (p == ant) {
+                        nodo q, z;
+                        q = p;
+                        while (q.obtenerLiga() != null) {
+                            q = q.obtenerLiga();
+                        }
+                        z = new nodo(0, dato);
+                        q.asignarLiga(z);
+
+                    } else {
+                        nodo q, z;
+
+                        q = new nodo(0, padre);
+                        z = new nodo(0, dato);
+                        q.asignarLiga(z);
+                        p.asignarLigaHijo(q);
+                        p.asignarDato(0);
+                        p.asignarSw(1);
+                    }
+                }
+            } else {
+                insertarRecursivo(p.obtenerLigaHijo(), p.obtenerLigaHijo(), padre, dato);
+            }
+            insertarRecursivo(p.obtenerLiga(), ant, padre, dato);
+        } // Fin si p diferente de null
     }
 
     /* método mostrar árbol entero
@@ -54,8 +92,10 @@ public class TallerArbolesNArios {
 
     /* método contar datos
     método principal de contar datos que llama al método recursivo*/
-    public int contarDatosPpal() {
-        return contarDatos(raiz);
+    public void contarDatosPpal() {
+        int datos;
+        datos = contarDatos(raiz);
+        System.out.println("El número de datos es: "+datos);
     }
 
     public int contarDatos(nodo p) {
