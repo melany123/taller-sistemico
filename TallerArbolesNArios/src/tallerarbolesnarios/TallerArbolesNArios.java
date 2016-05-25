@@ -34,8 +34,7 @@ public class TallerArbolesNArios {
         if (raiz == null) {
             p = new nodo(0, dato);
             raiz = p;
-        } 
-        else {
+        } else {
             insertarRecursivo(raiz, raiz, padre, dato);
         }
     }
@@ -95,7 +94,7 @@ public class TallerArbolesNArios {
     public void contarDatosPpal() {
         int datos;
         datos = contarDatos(raiz);
-        System.out.println("El número de datos es: "+datos);
+        System.out.println("El número de datos es: " + datos);
     }
 
     public int contarDatos(nodo p) {
@@ -174,7 +173,7 @@ public class TallerArbolesNArios {
         dato = leer.nextInt();
 
         if (raiz.obtenerDato() == dato) {
-            System.out.println("El nivel del dato es: 0");
+            System.out.println("El nivel del dato " + dato + " es: 0");
         } else {
             nivel = nivelDato(raiz, dato);
             System.out.println("El nivel del dato " + dato + " es: " + nivel);
@@ -190,7 +189,7 @@ public class TallerArbolesNArios {
                 if (p.obtenerDato() == dato) {
                     return nivel;
                 }
-                nivelDato(p.obtenerLiga(), dato);
+                nivel = nivel + nivelDato(p.obtenerLiga(), dato);
             } else {
                 nivel = nivel + nivelDato(p.obtenerLigaHijo(), dato) + 1;
             }

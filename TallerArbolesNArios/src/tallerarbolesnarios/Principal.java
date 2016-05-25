@@ -34,7 +34,6 @@ public class Principal {
         arbol.insertarNodo(15, 11);
   
         arbol.mostrarArbolPpal();
-        arbol.obtenerRaiz();
         arbol.contarDatosPpal();
         
     }  //fin main
