@@ -100,7 +100,7 @@ public class TallerArbolesNArios {
 
     public int contarDatos(nodo p) {
         int contador = 0;
-        while (p != null) {
+        if (p != null) {
             if (p.obtenerSw() == 0) {
                 contador++;
             } else {
