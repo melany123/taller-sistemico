@@ -185,15 +185,15 @@ public class TallerArbolesNArios {
         int nivel = 0;
 
         if (p != null) {
-            if (p.obtenerSw() == 0) {
-                if (p.obtenerDato() == dato) {
-                    return nivel;
+            if (p.obtenerDato() != dato) {
+                if (p.obtenerSw() == 1) {
+                    nivel = nivel + nivelDato(p.obtenerLigaHijo(), dato) + 1;
                 }
                 nivel = nivel + nivelDato(p.obtenerLiga(), dato);
-            } else {
-                nivel = nivel + nivelDato(p.obtenerLigaHijo(), dato) + 1;
             }
         }
         return nivel;
     }
+
+    //public void
 }//FIN CLASE TALLER ARBOL N ARIOS

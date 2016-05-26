@@ -35,6 +35,7 @@ public class Principal {
   
         arbol.mostrarArbolPpal();
         arbol.contarDatosPpal();
-        
+        arbol.nivelDatoPpal();
+       
     }  //fin main
 } // fin clase
